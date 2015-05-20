@@ -1,6 +1,7 @@
 {
     "name": "martinlindhe/php-traits",
-    "description": "",
+    "description": "Some reusable traits",
+    "license": "MIT",
     "require": {
         "php": ">=5.4.0",
         "martinlindhe/php-debughelper": "~0.1"
