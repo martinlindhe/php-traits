@@ -13,7 +13,7 @@ trait DiskCacheTrait
     public function store($id, $data)
     {
         $cacheFile = $this->getCacheFileName($id);
-        dbg('CACHE STORE '.$cacheFile);
+        dbg('CACHE STORE '.$cacheFile.', '.$id);
         file_put_contents($cacheFile, $data);
     }
 
