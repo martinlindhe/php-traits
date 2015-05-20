@@ -41,7 +41,9 @@ trait DiskCacheTrait
      */
     private function getCacheFileName($id)
     {
-        return sys_get_temp_dir() . '/cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
+        // TODO handle windows
+        $tmpDir = '/tmp';
+        return $tmpDir . '/cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
     }
 }
 
