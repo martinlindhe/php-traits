@@ -1,5 +1,7 @@
 <?php namespace MartinLindhe\Traits;
 
+use Carbon\Carbon;
+
 trait DiskCacheTrait
 {
     protected $resultFileNamePrefix;

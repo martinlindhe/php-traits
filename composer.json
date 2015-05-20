@@ -4,6 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
+        "nesbot/carbon": "~1.19",
         "martinlindhe/php-debughelper": "~0.1"
     },
     "require-dev": {
