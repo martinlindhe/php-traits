@@ -8,5 +8,14 @@ use MartinLindhe\Traits\DiskCacheTrait;
 class Stuff extends Cacheable
 {
     use DiskCacheTrait;
+}
 
+
+$x = (new Stuff)
+    ->cacheTtlSeconds(2);
+
+$x->store('hej', 'abc');
+
+if ($res = $x->load('hej')) {
+    echo "got ".$res;
 }
