@@ -41,7 +41,7 @@ trait DiskCacheTrait
      */
     private function getCacheFileName($id)
     {
-        $tmpFile = '/cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
+        $tmpFile = 'cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             return getenv('TMP')."\\".str_replace("/", "\\", $tmpFile);
