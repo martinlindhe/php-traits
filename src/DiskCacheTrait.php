@@ -6,6 +6,18 @@ trait DiskCacheTrait
 {
     protected $resultFileNamePrefix;
 
+    protected $cacheTtlSeconds;
+
+    /**
+     * @param int $n
+     * @return $this
+     */
+    public function cacheTtlSeconds($n)
+    {
+        $this->cacheTtlSeconds = $n;
+        return $this;
+    }
+
     /**
      * @param string $id
      * @param string $data
