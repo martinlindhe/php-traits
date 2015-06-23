@@ -8,6 +8,9 @@ trait DiskCacheTrait
 
     protected $cacheTtlSeconds;
 
+    /** @var string file extension, without the dot */
+    protected $extension;
+
     /**
      * @param int $n
      * @return $this
@@ -55,11 +58,20 @@ trait DiskCacheTrait
     {
         $tmpFile = 'cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
 
+        if ($this->extension) {
+            $tmpFile .= '.'.$this->extension;
+        }
+
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             return getenv('TMP')."\\".str_replace("/", "\\", $tmpFile);
         }
 
         return '/tmp/'.$tmpFile;
+    }
+
+    public function diskCacheExtension($ext)
+    {
+        $this->extension = $ext;
     }
 }
 
