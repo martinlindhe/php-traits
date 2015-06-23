@@ -66,7 +66,7 @@ trait DiskCacheTrait
             return getenv('TMP')."\\".str_replace("/", "\\", $tmpFile);
         }
 
-        return '/var/tmp/'.$tmpFile;
+        return '/private/var/tmp/'.$tmpFile;
     }
 
     public function diskCacheExtension($ext)
