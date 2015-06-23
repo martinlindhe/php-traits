@@ -51,7 +51,7 @@ trait DiskCacheTrait
      * @param string $id
      * @return string
      */
-    private function getCacheFileName($id)
+    public function getCacheFileName($id)
     {
         $tmpFile = 'cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
 

@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 use MartinLindhe\Traits\DiskCacheTrait;
 
 class Brain
@@ -16,12 +14,11 @@ class Brain
     }
 }
 
-
-$brain = new Brain;
-$res = $brain->load('name');
-nfo("got ".$res);
-
-
-sleep(2);
-$res = $brain->load('name');
-nfo("got ".$res);
+class DiskCacheTraitTest extends \PHPUnit_Framework_TestCase
+{
+    function test1()
+    {
+        $brain = new Brain;
+        $this->assertEquals('mr cool', $brain->load('name'));
+    }
+}
