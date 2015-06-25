@@ -56,17 +56,24 @@ trait DiskCacheTrait
      */
     public function getCacheFileName($id)
     {
-        $tmpFile = 'cache-' . str_replace('\\', '-',__CLASS__) . '.' . sha1($id);
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $tmpBase = getenv('TMP');
+        } else {
+            $tmpBase = '/var/tmp';
+        }
+
+        $tmpPath = $tmpBase . DIRECTORY_SEPARATOR . 'cache-' . str_replace('\\', DIRECTORY_SEPARATOR,__CLASS__);
+        if (!is_dir($tmpPath)) {
+            mkdir($tmpPath, 0777, true);
+        }
+
+        $tmpFile = $tmpPath . DIRECTORY_SEPARATOR . sha1($id);
 
         if ($this->extension) {
             $tmpFile .= '.'.$this->extension;
         }
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            return getenv('TMP')."\\".str_replace("/", "\\", $tmpFile);
-        }
-
-        return '/var/tmp/'.$tmpFile;
+        return $tmpFile;
     }
 
     public function diskCacheExtension($ext)
